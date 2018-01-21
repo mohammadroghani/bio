@@ -1,0 +1,7 @@
+library(phangorn)
+library(ape)
+matrix=read.csv("~/bio_project/bio/output/concatenation.csv",check.names=FALSE)
+tree=upgma(matrix)
+png("~/bio_project/bio/output/concatenation_tree.png")
+plot(tree,main="Concatenation Tree")
+dev.off()

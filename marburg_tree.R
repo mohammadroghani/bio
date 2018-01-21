@@ -1,0 +1,7 @@
+library(phangorn)
+library(ape)
+matrix=read.csv("~/bio_project/bio/output/marburg.csv",check.names=FALSE)
+tree=upgma(matrix)
+png("~/bio_project/bio/output/marburg_tree.png")
+plot(tree,main="Marburg Tree")
+dev.off()
