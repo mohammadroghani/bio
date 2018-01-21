@@ -79,6 +79,11 @@ int main(){
 		string name="output/"+Gene[k]+".csv";
 		ofstream cout(name);
 		for(int i=0;i<5;i++){
+			cout<<names[i];
+			if(i!=4)cout<<",";
+		}
+		cout<<endl;
+		for(int i=0;i<5;i++){
 			for(int j=0;j<5;j++){
 				cout<<mat[k][i][j];
 				if(j!=4)cout<<",";
