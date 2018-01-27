@@ -9,11 +9,22 @@ int dp[20000][8000];
 const int inf=1e9;
 
 
+/**
+	finding best position for string t in string s with maximum score
+	match = 1
+	mismatch = -2
+	gap = -3
+	return index of start and end of substring that match to t
+  **/
 pair<int,int> align(string s, string t){
 	int match=1,mismatch=-2,gap=-3,ret=-1;
+	
+	//initializing dynamic table
 	for(int i=0;i<=s.size();i++)for(int j=0;j<=t.size();j++)dp[i][j]=-inf;
 	for(int i=0;i<=s.size();i++)dp[i][0]=0;
 	for(int j=1;j<=t.size();j++)dp[0][j]=dp[0][j-1]+gap;
+
+	//filling table
 	for(int i=1;i<=s.size();i++){
 		for(int j=1;j<=t.size();j++){
 			dp[i][j]=max(dp[i-1][j],dp[i][j-1])+gap;
@@ -21,6 +32,8 @@ pair<int,int> align(string s, string t){
 			else dp[i][j]=max(dp[i][j],dp[i-1][j-1]+mismatch);
 		}
 	}
+
+	//finding best match
 	int mx=-inf;
 	int x=-1,y=t.size();
 	for(int i=0;i<=s.size();i++){
@@ -30,6 +43,8 @@ pair<int,int> align(string s, string t){
 		}
 	}
 	ret=x;
+
+	//finding index of start and end
 	while(y>0){
 		if(x>0 && dp[x-1][y]+gap==dp[x][y]){
 			x--;
@@ -49,12 +64,14 @@ pair<int,int> align(string s, string t){
 	return make_pair(x,ret);
 }
 
+//names of ebola
 string names[]={
 	"Zaire", "TaiForest", "Sudan", "Reston", "Bundibugyo"
 };
 
 int main(){
 	vector<pair<string,string> > v;
+	//reading genes of marburg
 	string last="";
 	string name="resources/Marburg_Genes.fasta";
 	ifstream cin(name);
@@ -74,6 +91,7 @@ int main(){
 		t+=tmp;
 	}
 	v.push_back(make_pair(last,t));
+	//find best match for every pair of gene and ebola
 	for(int i=0;i<5;i++){
 		for(int j=0;j<7;j++){
 			name="resources/"+names[i]+"_genome.fasta";

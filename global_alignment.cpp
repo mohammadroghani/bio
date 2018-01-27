@@ -12,6 +12,13 @@ const int inf=1e9;
 
 map<pair<string,string>, pair<int,int> > m;  
 
+/**
+  finding edit distance of string s and t
+  match = 0
+  mismatch = 1
+  gap = 1
+  return minimum edit distance
+  **/
 int align(string s, string t){
 	int match=0,mismatch=1,gap=1,ret=inf;
 	for(int i=0;i<=s.size();i++)for(int j=0;j<=t.size();j++)dp[i][j]=inf;
@@ -38,6 +45,7 @@ int main(){
 	while(cin>>x>>y>>lo>>hi){
 		m[make_pair(x,y)]=make_pair(lo,hi);
 	}
+	//finding global edit distance for every two genome
 	for(int i=0;i<5;i++){
 		string name="resources/"+names[i]+"_genome.fasta";
 		ifstream cin(name);
@@ -66,6 +74,7 @@ int main(){
 			mat[i][j]=align(left,right);
 		}
 	}
+	//saving edit distance matrix in global.csv
 	ofstream cout("output/global.csv");
 	for(int i=0;i<5;i++){
 		cout<<names[i];

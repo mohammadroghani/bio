@@ -13,6 +13,14 @@ string con[5];
 
 map<pair<string,string>, pair<int,int> > m;  
 
+/**
+  finding edit distance between s and t
+  match = 0
+  mismatch = 1
+  gap 1
+  return edit distance between s and t
+  **/
+
 int align(string s, string t){
 	int match=0,mismatch=1,gap=1,ret=inf;
 	for(int i=0;i<=s.size();i++)for(int j=0;j<=t.size();j++)dp[i][j]=inf;
@@ -28,9 +36,12 @@ int align(string s, string t){
 	return dp[s.size()][t.size()];
 }
 
+//names of ebolas
 string names[]={
 	"Zaire", "TaiForest", "Sudan", "Reston", "Bundibugyo", "Marburg"
 };
+
+//names of genes
 string Gene[]={
 	"NP", "VP35", "VP40", "GP", "VP30", "VP24", "L"
 };

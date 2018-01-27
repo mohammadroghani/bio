@@ -13,6 +13,14 @@ string con[5];
 
 map<pair<string,string>, pair<int,int> > m;  
 
+
+/**
+  finding edit distance of s and t
+  match = 0
+  mismatch = 1
+  gap = 1
+  return minimum edit distance of s and t
+  **/
 int align(string s, string t){
 	int match=0,mismatch=1,gap=1,ret=inf;
 	for(int i=0;i<=s.size();i++)for(int j=0;j<=t.size();j++)dp[i][j]=inf;
@@ -28,9 +36,12 @@ int align(string s, string t){
 	return dp[s.size()][t.size()];
 }
 
+//names of ebola
 string names[]={
 	"Zaire", "TaiForest", "Sudan", "Reston", "Bundibugyo"
 };
+
+//names of genes
 string Gene[]={
 	"NP", "VP35", "VP40", "GP", "VP30", "VP24", "L"
 };
@@ -42,6 +53,8 @@ int main(){
 	while(cin>>x>>y>>lo>>hi){
 		m[make_pair(x,y)]=make_pair(lo,hi);
 	}
+
+	//concatenate genes for every ebolas
 	for(int i=0;i<5;i++){
 		string name="resources/"+names[i]+"_genome.fasta";
 		ifstream cin(name);
@@ -67,6 +80,7 @@ int main(){
 		if(i!=4)cout<<",";
 	}
 	cout<<endl;
+	//finding edit distance of every pair of new strings
 	for(int i=0;i<5;i++){
 		for(int j=0;j<5;j++){
 			cout<<align(con[i],con[j]);

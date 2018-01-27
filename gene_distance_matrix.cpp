@@ -12,6 +12,13 @@ const int inf=1e9;
 
 map<pair<string,string>, pair<int,int> > m;  
 
+/**
+  finding edit distance of string s and t
+  match = 0
+  mismatch = 1
+  gap = 1
+  return minimum edit distance
+  **/
 int align(string s, string t){
 	int match=0,mismatch=1,gap=1,ret=inf;
 	for(int i=0;i<=s.size();i++)for(int j=0;j<=t.size();j++)dp[i][j]=inf;
@@ -27,9 +34,12 @@ int align(string s, string t){
 	return dp[s.size()][t.size()];
 }
 
+//names of ebola
 string names[]={
 	"Zaire", "TaiForest", "Sudan", "Reston", "Bundibugyo"
 };
+
+//names of genes
 string Gene[]={
 	"NP", "VP35", "VP40", "GP", "VP30", "VP24", "L"
 };
@@ -41,6 +51,7 @@ int main(){
 	while(cin>>x>>y>>lo>>hi){
 		m[make_pair(x,y)]=make_pair(lo,hi);
 	}
+	//finding edit distance for every triple of (gene,genome,genome)
 	for(int k=0;k<7;k++){
 		for(int i=0;i<5;i++){
 			string name="resources/"+names[i]+"_genome.fasta";
@@ -75,6 +86,8 @@ int main(){
 			}
 		}
 	}
+
+	//save edit distance in 7 distjoin csv file
 	for(int k=0;k<7;k++){
 		string name="output/"+Gene[k]+".csv";
 		ofstream cout(name);
