@@ -1,0 +1,74 @@
+\documentclass[11pt, oneside]{article}   	
+\usepackage[hidelinks]{hyperref}
+\usepackage{cite}
+\usepackage{url}
+\usepackage{xepersian}
+\settextfont{XB Zar}
+\title{گزارش تئوری}
+\author{محمد روغنی}
+\begin{document}
+\maketitle
+\section*{1.2}
+\begin{itemize}
+\item پروتئین های ساختاری
+\cite{stru}
+\begin{enumerate}
+\item VP24
+\item VP30
+\item VP35
+\item VP30
+\item GP
+\item NP
+\item L
+
+\end{enumerate}
+\item پروتئین های غیرساختاری
+\begin{enumerate}
+\item sGP
+\end{enumerate}
+\end{itemize}
+پروتئین VP24 و VP40 در انتشار و بازتولید ویروس ابولا نقش مهمی دارند.
+\section*{1.3}
+ابولا از طریق دنریت‌ها که رشته مانندی هستند که به جسم سلولی یاخته‌های عصبی (نورون‌ها)، متصل هستند به غدد لنفاوی نفوز کرده و سپس با وارد شدن به خون و رسیدن به کبد باعث بیماری و کشته شدن فرد می‌شود.
+\cite{ebola}
+
+\section*{3.1}
+\begin{itemize}
+\item در الگوریتم UPGMA ارتفاع برگ ها برابر است اما در الگوریتم NJ متفاوت است.
+\item درخت خروجی از الگوریتم UPGMA دارای ریشه است اما درخت خروجی از الگوریتم NJ بدون ریشه است.
+\end{itemize}
+این تفاوت ها به دلیل تفاوت در نوع الگوریتم هاست، در الگوریتم UPGMA، molecule clock ثابت در نظر گرفته میشود ولی در الگوریتم NJ خیر.\\
+در مسائلی که molecular clock ثابت است میتوان از UPGMA استفاده کرد اما الگوریتم دقیقی نیست.
+\cite{upgmanj}
+\section*{3.2}
+\begin{itemize}
+\item روش اول
+در این روش میتوانیم ابتدا بیابیم هر ژن به چه قسمتی از یک ژنوم منطبق میشود. مثلا برای ژنوم سودان محل انطباق تمام ۷ ژن را به دست آوریم. سپس این قسمت ها را به هم بچسبانیم و بعد روی ژن های جدید الگوریتم تطابق سراسری را اجرا کنیم. این روش بسیار دقیق است چرا که قسمت های منطبق شده با ژن قسمت های تاثیرگذار هستند و جهش در آن ها بیشترین تاثیر در تفاوت عملکرد گونه دارد.
+\item روش دوم
+در این روش از کتابخانه ی  ape در R تابع consensus را فراخوانده و ۷ ماتریس فاصله در قسمت قبل را به آن میدهیم، خروجی درخت تلفیقی از این ۷ درخت خواهد بود.
+\end{itemize}
+\section*{4.1}
+$$rt = -ln(1- \frac{4}{3}p)$$
+\begin{itemize}
+\item p = نسبت تعداد جهش ها به طول رشته ی اولیه
+\item r = نرخ جهش
+\end{itemize}
+این مدل بر پایه ی مدل jukes cantor است که در آن احتمال جهش ها برابر در نظر گرفته میشود.
+\cite{time}
+\section*{4.2}
+میتوانیم از این مدل استفاده کنیم که اگر تعداد جهش ها از مقداری بیشتر شد بگوییم یک گونه ی جدید به وجود آمده است. باتوجه به فاصله ی ویرایش گونه های مختلف ویروس ابولا میتوانیم این حد را برابر با میانگین فاصله ی ویرایش دو به دوی آن ها قرار دهیم که برابر است با ۶۵۴۳، و طول میانگین این گونه ها برابر است با ۱۹۰۰۰ که طبق فرمول بخش قبل زمان لازم برای به وجود آمدن یک گونه ی جدید برابر خواهد بود با ۳۲۳ سال.
+\newpage
+\begin{thebibliography}{1}
+\begin{latin}
+\bibitem{upgmanj}
+   {\url{https://www.researchgate.net/post/What_is_the_difference_between_UPGMA_and_NEJ_method_while_constructing_a_tree_using_a_MEGA_4_software}}
+\bibitem{time}
+   {\url{https://mathcs.clarku.edu/~djoyce/java/Phyltree/mutations.html}}  
+\bibitem{stru}
+   {\url{https://en.wikipedia.org/wiki/Ebola_virus}}  
+\bibitem{ebola}
+   {\url{http://www.sciencemag.org/news/2014/08/what-does-ebola-actually-do}}  
+
+\end{latin}
+\end{thebibliography}
+\end{document}  
